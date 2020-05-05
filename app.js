@@ -11,7 +11,7 @@ const renameFiles = () => {
     if (files.length === 0) return;
     files.forEach(async (file) => {
       try {
-        const pathToFil = path.join(__dirname, `/pdfs/${file}`);
+        const pathToFile = path.join(__dirname, `/pdfs/${file}`);
         const myPDF = await pdf(pathToFile);
         const text = myPDF.text;
         const urnExpression = /[A-Za-z]{2}\d{6}_[vV]{1}\d{1}_\d{2}|[A-Za-z]{2}\d{6}_[vV]{1}\d{2}_\d{2}/;
