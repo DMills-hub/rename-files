@@ -11,6 +11,7 @@ const renameFiles = () => {
     if (err) {
       errorHandler(err);
     }
+    if (files.length === 0) return
     files.forEach(async (file) => {
       try {
         const pathToFile = path.join(__dirname, `/pdfs/${file}`);
