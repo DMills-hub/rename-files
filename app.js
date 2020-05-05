@@ -16,8 +16,10 @@ const renameFiles = () => {
         const pathToFile = path.join(__dirname, `/pdfs/${file}`);
         const myPDF = await pdf(pathToFile);
         const text = myPDF.text;
-        const urnExpression = /AA\d{6}_V\d{1}_\d{2}|AA\d{6}_V\d{2}_\d{2}|AA\d{6}_v\d{1}_\d{2}|AA\d{6}_v\d{2}_\d{2}/;
+        const urnExpression = /[A-Za-z]{2}\d{6}_V\d{1}_\d{1}|[A-Za-z]{2}\d{6}_V\d{2}_\d{1}/;
         const urn = text.match(urnExpression);
+        console.log(urn);
+        
         fs.rename(pathToFile, `${PATH_TO_PROCESSED_PDFS}/${urn}.pdf`, (err) => {
           if (err) {
             errorHandler(err, file);
