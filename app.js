@@ -18,7 +18,7 @@ const renameFiles = () => {
         const urn = text.match(urnExpression);
         if (urn == null || urn === "null") {
           fs.rename(pathToFile, `${PATH_TO_FAILED_PDFS}/${file}`, (err) => {
-            errorHandler(err, file);
+            return errorHandler(err, file);
           });
         }
         fs.rename(pathToFile, `${PATH_TO_PROCESSED_PDFS}/${urn}.pdf`, (err) => {
